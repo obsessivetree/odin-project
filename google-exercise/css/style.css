@@ -1,3 +1,7 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -6,13 +10,24 @@ body {
     /* display: flex;
     flex-direction: column; */
     width: 100%;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "main main main"
+        "footer footer footer";
+    grid-template-rows: 10% 80% 10%;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0 0 60px
 }
 .clear {
     clear:both;
 }
-/* header {
-    background-color: rgb(19, 56, 167);
-} */
+header {
+    grid-area: header;
+    margin-top: 10px;
+    font-size: 1em;
+}
 nav {
     margin: 0px 25px 15px;
     display: block;
@@ -31,7 +46,7 @@ nav ul li a:hover {
 #left-nav {
     float: left;
     position: relative;
-    top: 9px;
+    top: 12px;
 }
 #right-nav {
     float: right;
@@ -98,6 +113,9 @@ main {
     /* background-color: rgb(255, 173, 173); */
     display: flex;
     flex-direction: column;
+    grid-area: main;
+    flex-wrap: nowrap;
+    
 }
 #google-logo {
     width: 300px;
@@ -107,7 +125,7 @@ main {
     width: 17px;
     position: relative;
     /* float: left; */
-    top: 9px;
+    top: 2px;
     left: 10px;
     justify-content: flex-start;
     align-self: center;
@@ -142,10 +160,11 @@ main {
 }
 #search-bar {
     position: relative;
-    right:15px;
-    top: 10px;
+    right:5px;
+    top: 0px;
     width: 100%;
-    max-width: 550px;
+    max-width: 575px;
+    height: 35px;
     border: none;
 }
 #search-bar:focus {
@@ -177,24 +196,6 @@ main {
         width: 90%;
     }
 } */
-/* @media only screen and (max-width: 794px) {
-    footer {
-        grid-template-rows: auto auto;
-        grid-template-columns: auto auto;
-        grid-area:
-            "bottom-nav-center"
-            "bottom-nav-left bottom-nav-right"
-    } 
-    #bottom-nav-center {
-        order: 1;
-    }
-    #bottom-nav-left {
-        order: 2;
-    }
-    #bottom-nav-right {
-        order: 3;
-    } 
-} */
 #buttons {
     margin: 10px auto;
 
@@ -224,14 +225,17 @@ main {
 
 footer {
     background-color: #F2F2F2;
-    height: auto;
+    /* height: auto; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    
+    grid-template-areas: 
+        "left middle right";
+    grid-area: footer;
     position: absolute;
     bottom: 0;
-    padding: 20px 0;
+    padding: 20px 0 10px 0;
+    box-sizing: border-box;
     width: 100%;
+    overflow: hidden;
     /* justify-content: space-between; */
 }
 /* footer div {
@@ -252,16 +256,19 @@ footer a:hover {
 }
 #bottom-nav-left {
     justify-self: left;
-    min-width: max-content;
-    margin-left: 10px;
-    /* order: 2; */
+    width: 300px;
+    padding-left: 10px;
+    grid-area: left;
+    margin-bottom: 10px;
+    /* background-color: rgb(208, 165, 248); */
 }
 #bottom-nav-center {
     justify-self: center;
     min-width: max-content;
     position: relative;
     top: -2px;
-    /* order: 1; */
+    grid-area: middle;
+    margin-bottom: 10px;
 }
 #bottom-nav-center img {
     position: relative;
@@ -271,7 +278,33 @@ footer a:hover {
 }
 #bottom-nav-right {
     justify-self: right;
-    min-width: max-content;
-    margin-right: 10px;
-    /* order: 3; */
+    text-align: right;
+    min-width: 300px;
+    padding-right: 10px;
+    grid-area: right;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 796px) {
+    footer {
+        grid-template-areas:
+            "middle middle"
+            "left right"
+    }
+}
+@media only screen and (max-width: 620px) {
+    footer {
+        grid-template-areas:
+            "middle"
+            "left"
+            "right";
+      
+    }
+    #bottom-nav-right {
+        justify-self: center;
+        text-align: center;
+    }
+    #bottom-nav-left {
+        justify-self: center;
+        text-align: center;
+    }
 }
