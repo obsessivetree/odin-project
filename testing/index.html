@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Testing</title>
+    <link rel=stylesheet type="text/css" href="reset.css">
+    <style>
+        body {
+            background-color: rgb(0, 59, 0);
+            color: white;
+        }
+        #one {
+            margin: auto;
+            width: max-content;
+        }
+        button {
+            border-radius: 0;
+            border: none;
+            padding: 10px;
+        }
+        button:hover {
+            background-color: rgb(255, 167, 167);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id=one>
+        <h1>Button:</h1>
+        <button id="button">PUSH ME</button>
+    </div>
+    <script>
+        let btn = document.querySelector("#button");
+        function myAlert() {
+            alert('nice.')
+        }
+        btn.addEventListener('click', function (e) {
+            console.log(e.target)
+        });
+    </script>
+</body>
+
+
+
+</html>

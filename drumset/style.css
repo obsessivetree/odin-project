@@ -1,0 +1,45 @@
+.key {
+    border: rgb(255, 255, 255) 3px solid;
+    color: white;
+    font-size: 1.5em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* padding: 20px 25px; */
+    height: 100px;
+    width: 100px;
+    background-color: rgba(10, 10, 10, 0.363);
+    margin: 6px;
+    display: inline-block;
+    transition: all .05s;
+}
+.key:hover {
+    background-color: rgba(10, 10, 10, 0.521);
+
+}
+/* button:active {
+    background-color: red;
+    height: 105px;
+    width: 106px;
+    margin: 3px;
+    box-shadow: red 0 0 15px 5px;
+} */
+body {
+    background-color: rgb(70, 46, 46);
+    color: white;
+    background-image: url(images/drumpic.jpg);
+    background-size:cover;
+}
+main {
+    margin: 5rem auto;
+    height:max-content;
+    width: max-content;
+}
+.playing {
+    transform: scale(1.1);
+    /* height: 105px;
+    width: 106px;
+    margin: 3px; */
+    box-shadow: red 0 0 15px 5px;
+}
+p {
+    text-transform: uppercase;
+}
