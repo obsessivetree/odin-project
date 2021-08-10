@@ -3,17 +3,19 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </head>
     <body>
-        <header>
-
-        </header>
         <main>
-            Hello World
-        </main>
-        <footer>
 
-        </footer>
+            <button id='rock' class='player-choice'>ROCK</button
+            ><button id='paper' class='player-choice'>PAPER</button
+            ><button id='scissors' class='player-choice'>SCISSORS</button>
+
+            <div id='results'>
+                <div id='machine'>Machine: <span id='machine-score' class='score'>0</span></div>
+                <div id='human'>Human: <span id='human-score' class='score'>0</span></div>
+            </div>
+        </main>
     </body>
 </html>
