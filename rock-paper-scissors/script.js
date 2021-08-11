@@ -1,55 +1,54 @@
-function game() {
-// show total wins and losses for player
     let userWins = 0;
     let computerWins = 0;
-    let roundEnd = false;
-    let userPlay;
-    let computerPlay = "";
-    let userScore = document.querySelector("#human-score").textContent;
-    let computerScore = document.querySelector("#machine-score").textContent;
-    // check for which input
 
-    // generate random play from computer
+
+    function userScore(score){
+        document.querySelector("#human-score").textContent = score;
+    }
+    function computerScore(score) {
+        document.querySelector("#machine-score").textContent = score;
+    }
+
+
     function computerPlayFunc() {
         const index = Math.floor(Math.random()*3);
         const playOptions = ['rock','paper','scissors'];
-        computerPlay = playOptions[index];
+        return (playOptions[index])
     }
-    // user input
-
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => button.addEventListener('click', (e) => {
-        playRound(e.target.id)
-        console.log(e.target.id)}))
+    
     
     function playRound(userPlay) {
-        while (roundEnd === false){
-    // take INPUT of rock paper or scissors from user
+        let roundEnd = false;
+        let computerPlay = "";
 
-            computerPlayFunc();
-            
+        while (roundEnd === false){       
+            computerPlay = computerPlayFunc();    
     // compare answers
             if (userPlay !== computerPlay) {
                 if (userPlay === 'rock' && computerPlay === 'scissors' || userPlay === 'paper' && computerPlay === 'rock' || userPlay === 'scissors' && computerPlay === 'paper') {
-                    userWins++;
-                    userScore = userWins;
+                    userScore(++userWins);
+                    console.log(userPlay)
+                    console.log(`${userPlay} beats ${computerPlay}! The HUMAN wins! The score is: \nHUMAN ${userWins} - MACHINES ${computerWins}`);
                     roundEnd = true;
-                    alert(`${userPlay.toUpperCase()} beats ${computerPlay.toUpperCase()}! The HUMAN wins! The score is: \nHUMAN ${userWins} - MACHINES ${computerWins}`);
                 } else {
-                    computerWins++;
-                    computerScore = computerWins;
+                    // computerWins++;
+                    computerScore(++computerWins);
+                    console.log(userPlay)
+                    console.log(`${computerPlay} beats ${userPlay}! The MACHINES win! The score is: \HUMAN ${userWins} - MACHINES ${computerWins}`);
                     roundEnd = true;
-                    alert(`${computerPlay.toUpperCase()} beats ${userPlay.toUpperCase()}! The MACHINES win! The score is: \HUMAN ${userWins} - MACHINES ${computerWins}`);
                 }
             } else {
+                console.log("DRAW!")
                 roundEnd = true;
-                alert("DRAW!")
             }  
         }
     }
-    // NEED TO FIGURE OUT HOW TO KEEP THE GAME GOING AND WAIT FOR CLICKS
-    // while (computerWins < 2 || userWins < 2){    }
-}
-game()
 
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => button.addEventListener('click', 
+        (e) => playRound(e.target.textContent.toLowerCase())
+    )
+)
 
