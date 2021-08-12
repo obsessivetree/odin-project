@@ -46,12 +46,14 @@ button:hover {
 }
 #machine-stuff {
     float: right;
+    color:powderblue
 }
 #machine {
     font-family: monospace;
 }
 #human-stuff {
     float: left;
+    color: pink;
 }
 #human {
     font-family: cursive;
@@ -64,4 +66,16 @@ button:hover {
 #message {
     clear: both;
     text-align: center;
+}
+input {
+    display: block;
+    margin: 1.5em auto auto;
+    width: 8em;
+    height: 3em;
+    border: rgb(126, 126, 255) 3px solid;
+    border-radius: 10px;
+}
+.hidden {
+    display:none;
+    visibility: hidden;
 }
