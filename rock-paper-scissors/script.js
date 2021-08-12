@@ -22,25 +22,32 @@
         let computerPlay = "";
 
         while (roundEnd === false){       
-            computerPlay = computerPlayFunc();    
+            computerPlay = computerPlayFunc();  
+            document.getElementById("human-play").textContent = userPlay;
+            document.getElementById("machine-play").textContent = computerPlay;
+
     // compare answers
             if (userPlay !== computerPlay) {
                 if (userPlay === 'rock' && computerPlay === 'scissors' || userPlay === 'paper' && computerPlay === 'rock' || userPlay === 'scissors' && computerPlay === 'paper') {
                     userScore(++userWins);
-                    console.log(userPlay)
-                    console.log(`${userPlay} beats ${computerPlay}! The HUMAN wins! The score is: \nHUMAN ${userWins} - MACHINES ${computerWins}`);
+                    document.getElementById("message").textContent = (`${userPlay.toUpperCase()} beats ${computerPlay.toUpperCase()}! The HUMAN wins!`);
                     roundEnd = true;
                 } else {
                     // computerWins++;
                     computerScore(++computerWins);
-                    console.log(userPlay)
-                    console.log(`${computerPlay} beats ${userPlay}! The MACHINES win! The score is: \HUMAN ${userWins} - MACHINES ${computerWins}`);
+                    document.getElementById("message").textContent = `${computerPlay.toUpperCase()} beats ${userPlay.toUpperCase()}! The MACHINE wins!`;
                     roundEnd = true;
                 }
             } else {
-                console.log("DRAW!")
+                document.getElementById("message").textContent = "DRAW!";
                 roundEnd = true;
             }  
+        }
+        if (userWins >= 2){
+            document.getElementById("message").textContent = 'GAME OVER!';
+        } else if (computerWins >= 2) {
+            document.getElementById("message").textContent = 'GAME OVER!';
+
         }
     }
 
