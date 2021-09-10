@@ -5,6 +5,7 @@
 <head>
     <title>Testing</title>
     <link rel=stylesheet type="text/css" href="reset.css">
+    <script src='script.js' defer></script>
     <style>
         body {
             background-color: rgb(0, 59, 0);
@@ -32,12 +33,12 @@
         <button id="button">PUSH ME</button>
     </div>
     <script>
-        let btn = document.querySelector("#button");
+        let btn = document.querySelector("button");
         function myAlert() {
             alert('nice.')
         }
         btn.addEventListener('click', function (e) {
-            console.log(e.target)
+            myAlert()
         });
     </script>
 </body>

@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(43, 0, 43);
+    background-color: rgb(0, 6, 43);
+    /* background-color: white; */
 }
 header {
     width: 65vw;
@@ -11,7 +12,7 @@ header button {
     background-color: rgb(0, 0, 0);
     color: white;
     font-size: 1.2em;
-    /* border-radius: 3px; */
+    border-radius: 3px;
 }
 header button:hover {
     background-color: rgb(26, 25, 25);
@@ -23,9 +24,12 @@ main {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
+    border: black 1px solid;
+    border-radius: 3px;
+    background-color: rgb(214, 214, 214);
+
 }
 div {
-    background-color: rgb(214, 214, 214);
     /* border: 1px rgb(153, 153, 153) solid; */
     text-align: center;
     height: 1fr;
@@ -54,6 +58,3 @@ div {
     background-color: rgb(122, 255, 255);
 }
 
-.fade-out {
-    transition: all 3s;
-}

@@ -21,7 +21,7 @@
         return (colors[Math.floor(Math.random()*colors.length)])
     }
 
-    function gridColor(color='black', random=false){
+    function gridColor(color='black', random=false, fade=false){
         let divs = document.querySelectorAll("div");
         divs.forEach(div => {
             // div.classList.remove(currentColor);
@@ -34,10 +34,25 @@
                 } else {
                     e.target.className = randomColor();
                 }
+
+                // if (fade === true) {
+                //     let currentOpacity = e.target.style.opacity;
+                //     console.log(currentOpacity);
+                //     if (currentOpacity !== ""){
+                //         e.target.style = `opacity: ${parseInt(currentOpacity) + 0.1};`;
+                //         console.log(e.target.style)
+                //     } else {
+                //         e.target.style = 'opacity: 0.1;';
+                //         console.log(e.target.style.opacity)
+
+                //     }
+                // } else {
+                //     e.target.style.opacity = '';
+                // }
             });
             // console.log(color);
             currentColor = color;
-            colorBtn.textContent = `Color: ${color}`
+            colorBtn.textContent = `Color: ${color}`;
     })};
 
     const colorBtn = document.querySelector("#color-btn");
@@ -52,24 +67,30 @@
     makeGrid();
     gridColor();
 
+
     resetBtn.addEventListener('click', ()=> {
         do{
-            var dimensions = parseInt(prompt("Dimensions (1-100): ", "25"));
-        } while (isNaN(dimensions) || dimensions > 100 || dimensions < 1);
+            var dimensions = parseInt(prompt("Dimensions (1-75): ", "25"));
+        } while (isNaN(dimensions) || dimensions > 75 || dimensions < 1);
         makeGrid(dimensions)
         gridColor()
         randomBtn.textContent = "Random: off"
+        fadeBtn.textContent = "Fade: off"
     })
 
+
     randomBtn.addEventListener('click', () => {
+        
         if (randomBtn.textContent === "Random: off"){
-            gridColor('black', random=true);
+            gridColor('black', random=true, fade=false);
             randomBtn.textContent = "Random: on"
         } else {
             randomBtn.textContent = "Random: off"
-            gridColor(currentColor, random=false)
+            gridColor(currentColor, random=false, fade=false)
         }
+        fadeBtn.textContent = "Fade: off"
     });
+
 
     colorBtn.addEventListener('click', () => {
         randomBtn.textContent = "Random: off"
@@ -83,9 +104,47 @@
                 color = colors[0]
             }
         }
-
-        gridColor(color);
+        if (fadeBtn.textContent === "Fade: on"){
+            gridColor(color, random=false, fade=true)
+           
+        } else {
+            gridColor(color, random=false, fade=false);
+        }
         currentColor = color;
         // console.log(randColor)
+    });
+
+
+
+    fadeBtn.addEventListener('click', function(){
+        if (fadeBtn.textContent === "Fade: off"){
+            randomBtn.textContent = "Random: off";
+            fadeBtn.textContent = "Fade: on";
+            gridColor(currentColor, random=false, fade=true);
+
+
+            let divs = document.querySelectorAll("div");
+            divs.forEach(div => {div.addEventListener('mouseover', (e) => {
+                
+                let currentOpacity = getComputedStyle(e.target).getPropertyValue("opacity");
+                console.log(currentOpacity);
+                if (currentOpacity < "1"){
+                    let newOpacity = parseInt(currentOpacity) + 0.1;
+                    e.target.style = `opacity: ${newOpacity};`
+                    console.log(currentOpacity)
+                    console.log(getComputedStyle(e.target).getPropertyValue("opacity"))
+                } else {
+                    console.log(`It's seeing ${currentOpacity}`)
+                    e.target.style = 'opacity: 0.1;';
+                    console.log(e.target.style.opacity)
+
+                }
+            
+        })})
+        } else if (fadeBtn.textContent === "Fade: on"){
+            fadeBtn.textContent = "Fade: off"
+            gridColor(currentColor, random=false, fade=false)
+        }
         
+
     });
