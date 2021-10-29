@@ -73,10 +73,11 @@ numBtns.forEach((numButton) => {numButton.addEventListener("click", e => {
 clearBtn.addEventListener("click", e => {
     clear()
 });
-backspaceBtn.addEventListener("click", e => {
+function backspace(){
     removeActiveOperator();
     screen.textContent = screen.textContent.slice(0, screen.textContent.length-1);
-});
+}
+backspaceBtn.addEventListener("click", backspace);
 posNegBtn.addEventListener("click", e => {
     removeActiveOperator();
     screen.textContent[0] === '-' ? screen.textContent = screen.textContent.slice(1) : screen.textContent = '-' + screen.textContent
@@ -127,7 +128,7 @@ operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener("click", e => {
     e.target.classList.add("active-operator");
     activeOperator = true;
 }));
-decimal.addEventListener("click", e => {
+function addDecimal() {
     if (screen.textContent.includes('.') !== true){
         screen.textContent += '.';
     } else if (activeOperator) {
@@ -135,7 +136,8 @@ decimal.addEventListener("click", e => {
         removeActiveOperator();
         activeOperator = false;
     }
-})
+}
+decimal.addEventListener("click", addDecimal)
 equalsBtn.addEventListener('click', () => {
     currentNumber = parseFloat(screen.textContent);
     answer = equals(previousNumber, operator, currentNumber);
@@ -147,17 +149,28 @@ equalsBtn.addEventListener('click', () => {
 })
     
 
-document.addEventListener("keydown", e => console.log(e.key))
+// document.addEventListener("keydown", e => {
+//     console.log(e.key,previousNumber, operator, currentNumber)
+//     if (e.key in allowedKeypresses['numbers']){
+//         screen.textContent += Number(e.key);
+//     }
+//     else if (e.key in allowedKeypresses['operators']){
+//         operator = allowedKeypresses[e.key.toString()]
+//     }
+//     else if (e.key in allowedKeypresses){
+//         allowedKeypresses[e.key.toString()]()
+//     }
+// })
 
 
 
 
 
-const allowedKeypresses = [
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    '+', '-', '*', '/',
-    'Backspace', 'Delete',
-    'Enter',
-    'Clear',
-    '.',
-]
+// const allowedKeypresses = {
+//     'numbers':['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',],
+//     'operators':{'+':add, '-':subtract, '*':multiply, '/':divide,},
+//     'Backspace':backspace, 'Delete':backspace,
+//     'Enter':equals,
+//     'Clear':clear,
+//     '.':addDecimal,
+// }

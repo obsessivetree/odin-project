@@ -20,27 +20,18 @@
         return (colors[Math.floor(Math.random()*colors.length)])
     }
 
-    function gridColor(color='black', random=false, fade=false){
+    function gridColor(color='black'){
         let divs = document.querySelectorAll("div");
         divs.forEach(div => {
-
-            if (fade === true){
-                // console.log(div.classList)
-                div.style.opacity = 0;
-            } else {
-                div.style.opacity = 1;
-            }
-
-
             div.addEventListener('mouseover', (e) => {
-                
-                 
-                    if (random === false) {
-                        e.target.className = color
+                e.target.color = currentColor;
+                    let currentOpacity = e.target.style.opacity;
+                    if (currentOpacity === Number){
+                        e.target.style = `opacity: ${parseFloat(currentOpacity) + 0.1};`;
                     } else {
-                        e.target.className = randomColor();
-                    }
-                
+                        e.target.style = 'opacity: 0.1;';
+                    } 
+               
             });
             currentColor = color;
             colorBtn.textContent = `Color: ${color}`;
