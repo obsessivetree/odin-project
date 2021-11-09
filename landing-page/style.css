@@ -15,9 +15,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-body * {
-    /* padding: 0 5rem; */
-}
 header {
     padding: 1rem 12rem;
     background-color:var(--dark-bg);
@@ -79,7 +76,6 @@ header a {
 }
 #section-two div div {
     width: 140px;
-    /* margin: 1rem; */
     font-size: .9rem;
     color: rgb(83, 83, 83);
 }
@@ -149,8 +145,3 @@ h1 > p {
 h2 {
     font-size: 2rem;
 }
-
-/* Quote font */
-/* Quote author position */
-/* footer height */
-/* fonts and font colors */
