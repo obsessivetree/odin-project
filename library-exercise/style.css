@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(105, 253, 228);
+    color: rgb(226, 226, 226);
+    margin: auto;
+    width: max-content;
+    margin-top: 1rem;
+    font-family:sans-serif;
+    padding: 0 1rem;
+}
+#new-book-button{
+    visibility: visible;
+    position: relative;
+}
+#form {
+    visibility:collapse;
+    position: absolute;
+    background-color: rgb(37, 37, 37);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px black solid;
+    width: max-content;
+    margin: 0 auto;
+}
+fieldset ul li{
+    display: flex;
+    justify-content:end;
+    align-items:center;
+    padding: .5rem;
+}
+form button {
+    width: 8.5rem;
+    border: none;
+    border-radius: 1px;
+}
+legend {
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: auto;
+    margin: auto;
+    padding-bottom: .7rem;
+}
+input {
+    border: none;
+    border-radius: 1px;
+    margin-left: 3px;
+}
+#lib-div {
+    margin: 1rem;
+    max-width: 95vw;
+}
+.book-card {
+    width: 25rem;
+    background-color: rgb(34, 34, 34);
+    padding: 2rem;
+    border-radius: .5rem;
+    border: 1px black solid;
+    /* float: left; */
+    margin: 1rem auto;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="#"/>
+    <title>Book Library</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form id="form">
+        <fieldset>
+            <legend>New Book</legend>
+            <ul>
+                <li>
+                    <label for='titleInp'>Title:</label>
+                    <input type="text" id="titleInp" name="titleInp">
+                </li>
+                <li>
+                    <label for='authorInp'>Author:</label>
+                    <input type="text" id="authorInp" name="authorInp">
+                </li>
+                <li>
+                    <label for='numOfPagesInp'># of pages:</label>
+                    <input type="number" id="numOfPagesInp" name="numOfPagesInp">
+                </li>
+                <li>
+                    <label for='isReadInp'>Read:</label>
+                    <input type="checkbox" id="isReadInp" name="isReadInp">
+                </li>
+            </ul>
+            <button type="submit" id="saveNewBook" name="saveNewBook">Save</button>
+            <button id="cancel">Cancel</button>
+        </fieldset>
+    </form>
+    <button id="new-book-button">New Book</button>
+    <div id="lib-div">
+        
+    </div>
+</body>
+</html>
