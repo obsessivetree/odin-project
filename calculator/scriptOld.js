@@ -7,7 +7,7 @@ function divide(a, b=1){
 function equals(firstNum, operator, secondNum){
     console.log(firstNum, secondNum)
     if (firstNum && operator && secondNum){
-        console.log(operator(firstNum, secondNum))
+        // console.log(operator(firstNum, secondNum))
         const ret = operator(firstNum, secondNum)
         justAnswered = true;
         ret === Number ? ret = Math.round(ret*1000)/1000 : ret
@@ -25,7 +25,7 @@ const clear = function(){
     operator = '';
     currentNumber = '';
     answer = '';
-    console.log(previousNumber, operator, currentNumber, answer)
+    // console.log(previousNumber, operator, currentNumber, answer)
     activeOperator = false;
     justAnswered = false;
 }
@@ -59,7 +59,7 @@ numBtns.forEach((numButton) => {numButton.addEventListener("click", e => {
         operator = '';
         currentNumber = '';
         answer = '';
-        console.log(previousNumber, operator, currentNumber, answer)
+        // console.log(previousNumber, operator, currentNumber, answer)
         activeOperator = false;
         justAnswered = false;
     }
@@ -84,7 +84,7 @@ posNegBtn.addEventListener("click", e => {
 });
 // store number
 operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener("click", e => {
-    console.log(e.target.id)
+    // console.log(e.target.id)
     if (!previousNumber){
         previousNumber = parseFloat(screen.textContent);
     } 
