@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(31, 31, 31);
+    color: white;
+}
+header {
+    padding-top: 4rem;
+}
+#game-board {
+    background-color: white;
+    width: max-content;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+section {
+    width: 5rem;
+    height: 5rem;
+    border: black 1px solid;
+}
