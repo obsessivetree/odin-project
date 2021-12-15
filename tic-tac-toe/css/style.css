@@ -12,6 +12,12 @@ header {
     font-size: 3rem;
     text-align: center;
 }
+footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 3rem;
+    text-align: center;
+}
 #game-board {
     background-color: white;
     width: max-content;
@@ -20,10 +26,15 @@ header {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     color: black;
+    font-family: monospace;
 }
 
 section {
     width: var(--ttt-section-size);
     height: var(--ttt-section-size);
     border: black 1px solid;
+    align-items:  center;
+    justify-content: center;
+    display: flex;
+    font-size: 300%;
 }
