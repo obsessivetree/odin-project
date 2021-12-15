@@ -1,9 +1,16 @@
+html {
+    --ttt-section-size: 7rem;
+}
+
 body {
     background-color: rgb(31, 31, 31);
     color: white;
 }
 header {
     padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 3rem;
+    text-align: center;
 }
 #game-board {
     background-color: white;
@@ -12,9 +19,11 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    color: black;
 }
+
 section {
-    width: 5rem;
-    height: 5rem;
+    width: var(--ttt-section-size);
+    height: var(--ttt-section-size);
     border: black 1px solid;
 }
