@@ -16,6 +16,12 @@ header {
     display: flex;
     justify-content: center;
 }
+footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 3rem;
+    text-align: center;
+}
 #game-board {
     /* background-color: white; */
     width: max-content;
