@@ -1,17 +1,17 @@
-const gameBoard = document.getElementById("game-board");
+const gameBoard     = document.getElementById("game-board");
 const playableAreas = document.querySelectorAll("section");
-let plays = '         '.split('');
+let plays           = '         '.split('');
 
 const numbers = {
-    'one' : 1,
-    'two' : 2,
+    'one'   : 1,
+    'two'   : 2,
     'three' : 3,
-    'four' : 4,
-    'five' : 5,
-    'six' : 6,
+    'four'  : 4,
+    'five'  : 5,
+    'six'   : 6,
     'seven' : 7,
     'eight' : 8,
-    'nine' : 9,
+    'nine'  : 9,
 }
 
 // Function to put array into gameboard
@@ -30,7 +30,7 @@ playableAreas.forEach(area => {
         const oCount = plays.filter(x => x=='O').length;
 
         console.log(numbers[e.target.id])
-
+        
         xCount === oCount ? plays[numbers[e.target.id-1]] = 'X' : plays[numbers[e.target.id-1]] = 'O';
         updateBoard();
     
