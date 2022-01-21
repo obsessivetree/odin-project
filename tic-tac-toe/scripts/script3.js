@@ -14,13 +14,18 @@ const Player = (name, symbol, isAI) => {
     return symbol;
   };
 
+  const setSymbol = (newSymbol) => {
+    symbol = newSymbol;
+    return symbol
+  }
+  
   const getScore = () => {
     return score;
   };
 
 	this.isAI = isAI;
 
-  return { getName, getSymbol, getScore, addWin, isAI };
+  return { getName, getSymbol, getScore, addWin, isAI, setSymbol };
 };
 
 // Game:
@@ -35,8 +40,34 @@ const Game = () => {
 	// const player1 = Player("P1", "👻", false); 
   // const player2 = Player("P2", "🧛", false); 
 
-  const player1 = Player("P1", "🍌", false); 
-  const player2 = Player("P2", "🍑", false); 
+  // const player1 = Player("Player 1", "🍌", false); 
+  // const player2 = Player("Player 2", "🍑", false); 
+  const p1Name = document.getElementById("p1-name").textContent;
+  const p2Name = document.getElementById("p2-name").textContent;
+
+  const p1Symbol = document.getElementById("p1-symbol").textContent.trim();
+  const p2Symbol = document.getElementById("p2-symbol").textContent.trim();
+
+  const isP1Ai = () => {
+    if (document.getElementById("ai-select-btn-p1").textContent === "Playing as Computer") {
+      return true
+    }
+    return false
+  }
+  const isP2Ai = () => {
+    if (document.getElementById("ai-select-btn-p2").textContent === "Playing as Computer") {
+      return true
+    }
+    return false
+  }
+
+
+  const player1 = Player(p1Name, p1Symbol, isP1Ai()); 
+  const player2 = Player(p2Name, p2Symbol, isP2Ai());   
+  console.log(player1.isAI)
+  console.log(player2.isAI)
+  document.getElementById("p1-symbol").textContent = player1.getSymbol();
+  document.getElementById("p2-symbol").textContent = player2.getSymbol();
 
 	// const player1 = (() => {
 	// 	let name, symbol, isAI;
@@ -68,8 +99,8 @@ const Game = () => {
 
 
   const playableAreas = document.querySelectorAll("section");
-  const p1Score = document.getElementById("p1-score");
-  const p2Score = document.getElementById("p2-score");
+  const p1Wins = document.getElementById("p1-wins");
+  const p2Wins = document.getElementById("p2-wins");
 
   const Board = (() => {
     let plays = new Array(9).fill("");
@@ -96,8 +127,10 @@ const Game = () => {
     };
 
 		const updateScores = () => {
-			p1Score.innerHTML = `<h3>${player1.getName()}'s Score:</h3><h4>${player1.getScore()}</h4>`;
-			p2Score.innerHTML = `<h3>${player2.getName()}'s Score:</h3><h4>${player2.getScore()}</h4>`;
+      if (player1.getScore() !== 0 || player2.getScore() !== 0) {
+        p1Wins.innerHTML = `<td>Wins:</td> <td>${player1.getScore()}</td>`;
+        p2Wins.innerHTML = `<td>Wins:</td> <td>${player2.getScore()}</td>`;
+      }
 		}
 		updateScores()
 
@@ -153,67 +186,64 @@ const Game = () => {
       let p1Count = plays.filter((sym) => sym === player1.getSymbol()).length;
       let p2Count = plays.filter((sym) => sym === player2.getSymbol()).length;
       // console.log(p1Count > p2Count ? player2 : player1)
-			const p1Text = document.getElementById("p1-score");
-			const p2Text = document.getElementById("p2-score");
+			const p1ScoreBox = document.getElementById("p1-score");
+			const p2ScoreBox = document.getElementById("p2-score");
       if (p1Count > p2Count) {
         console.log("getCurrentPlayer: P2");
-				p1Text.style.color = "rgb(0,0,0)";
-				p1Text.style.backgroundColor = "inherit";
-				p1Text.style.border = "none";
-				p2Text.style.color = "rgb(255,255,255)";
-				p2Text.style.backgroundColor = "rgb(31,31,31)";
-				p2Text.style.border = "1px rgb(255,255,255) solid";
+				p1ScoreBox.classList.remove("active-player");
+        p2ScoreBox.classList.add("active-player");
 				return player2
       } else {
         console.log("getCurrentPlayer: P1");
-				p1Text.style.color = "rgb(255,255,255)";
-				p1Text.style.backgroundColor = "rgb(31,31,31)";
-				p1Text.style.border = "1px rgb(255,255,255) solid";
-				p2Text.style.color = "rgb(0,0,0)";
-				p2Text.style.backgroundColor = "inherit";
-				p2Text.style.border = "none";
+				p1ScoreBox.classList.add("active-player");
+        p2ScoreBox.classList.remove("active-player");
 				return player1
       }
     };
+    const changeSymbol = (player, symbol) => {
+      const oldSymbol = player.getSymbol();
+      const newSymbol = player.setSymbol(symbol);
 
-		function randomPlay() {
-			let options = [];
-
-			function randomNumber(max) {
-				return Math.floor(Math.random() * max)
-			}
-	
-			for (let i = 0; i < 9; i++) {
-				if (plays[i] === "") {
-					options.push(i);
-				}
-				// console.log(options)
-			}
-			// console.log(options.length)
-			// console.log(randomNumber(options.length))
-			setPlay(options[randomNumber(options.length)], "B")
-		}
-
-    return { reset, setPlay, checkForWin, getPlays, getCurrentPlayer, updateScores, randomPlay };
-  })();
-
-  function* infinite() {
-    let index = 0;
-
-    while (true) {
-			// console.log(`Generator at: ${index}`)
-      yield ++index;
+      plays = plays.map(sym => sym === oldSymbol ? sym = newSymbol : sym = sym)
     }
-  }
+    const computerPlay = (difficulty="none") => {
+      const randomPlay = (player) => {
+        let options = [];
+  
+        function randomNumber(max) {
+          return Math.floor(Math.random() * max)
+        }
+    
+        for (let i = 0; i < 9; i++) {
+          if (plays[i] === "") {
+            options.push(i);
+          }
+          // console.log(options)
+        }
+        // console.log(options.length)
+        // console.log(randomNumber(options.length))
+        setPlay(options[randomNumber(options.length)], player.getSymbol())
+      }
+      if (difficulty === "none"){
+        if (player1.isAI && Board.getCurrentPlayer() === player1) {
+          randomPlay(player1)
+        }
+        if (player2.isAI && Board.getCurrentPlayer() === player2) {
+          randomPlay(player2)
+        }
+      }
+      currentPlayer = Board.getCurrentPlayer();
+    }
+		
 
-
-	
-	
-  let gen = infinite();
+    return { reset, setPlay, checkForWin, getPlays, getCurrentPlayer, updateScores, computerPlay, changeSymbol };
+  })();
+  
+ 
 	
   let currentPlayer = Board.getCurrentPlayer();
 	
-	// Board.randomPlay()
+	Board.computerPlay()
 
   playableAreas.forEach((area) => {
 
@@ -222,15 +252,18 @@ const Game = () => {
         let symbol = currentPlayer.getSymbol();
         e.target.style.color = "rgba(0,0,0,.3)";
         e.target.textContent = symbol;
+        
       }
     })
 
 		if (winner === false){
 			area.addEventListener("mouseup", (e) => {
-				console.log(`\n______________click_${gen.next().value}_____________\n`);
+				// console.log(`\n______________click_${gen.next().value}_____________\n`);
+				console.log(`\n______________click______________\n`);
 				e.target.style.color = "rgba(0,0,0,1)";
 				Board.setPlay(e.target.id, currentPlayer.getSymbol());
-				winner = Board.checkForWin(currentPlayer);
+        winner = Board.checkForWin(currentPlayer);
+				Board.computerPlay()
 				currentPlayer = Board.getCurrentPlayer();
 			});
 		}
@@ -245,4 +278,29 @@ const Game = () => {
 	});
 };
 
-Game();
+(() => {
+
+  const aiBtnP1 = document.getElementById("ai-select-btn-p1");
+  const aiBtnP2 = document.getElementById("ai-select-btn-p2");
+  const aiBtns = document.querySelectorAll(".ai-selects");
+  const editBtns = document.querySelectorAll(".edit-icon");
+  const playBtn = document.getElementById("play-btn");
+  playBtn.addEventListener('click', Game);
+  
+  
+  editBtns.forEach(button => button.addEventListener("click", e => {
+      let text = prompt("");
+      e.target.parentElement.parentElement.parentElement.firstElementChild.textContent = text
+  }))
+
+  aiBtns.forEach(button => button.addEventListener("click", e => {
+    if (e.target.textContent === "Playing as Human"){
+      e.target.textContent = "Playing as Computer"
+      e.target.id === aiBtnP1.id 
+      ? aiBtnP2.textContent = "Playing as Human" 
+      : aiBtnP1.textContent = "Playing as Human"
+    } else {
+      e.target.textContent = "Playing as Human"
+    }
+  }))
+})()
