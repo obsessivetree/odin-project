@@ -20,15 +20,8 @@ body {
 header {
     background-color: var(--dark-bg);
     color: var(--white);
-    padding: 1rem;
-    /* text-align: center; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-}
-header h1 {
-    font-size: 3rem;
+    /* padding: 1rem; */
+    text-align: center;
 }
 footer {
     padding-top: 4rem;
@@ -101,9 +94,27 @@ section {
     align-items: center;
     color: var(--black);
 }
-#play-btn {
-    width: 8rem;
+.play-btns {
+    width: max-content;
     margin: auto;
+}
+#new-game-btn {
+    visibility: visible;
+    display: initial;
+}
+#reset-btn {
+    visibility: hidden;
+    display: none;
+}
+#play-again-btn {
+    visibility: hidden;
+    display: none;
+}
+#switch-players-btn {
+    margin-top: 1rem;
+}
+#switch-players-btn:hover {
+    background-color: rgb(255, 238, 0);
 }
 header h1 {
     font-size: 4rem;
