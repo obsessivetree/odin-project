@@ -6,15 +6,10 @@ const form             = document.querySelector("#form");
 const libDiv           = document.querySelector("#lib-div");
 
 let isFormVisible = false;
-let myLibrary = [];
-form.style.position             = "absolute";
-form.style.visibility           = "collapse";
-newBookButton.style.visibility  = "visible";
-newBookButton.style.position    = "relative";
 
 
 function toggleFormDisplay() {
-    if (!isFormVisible){
+    if (isFormVisible){
         form.style.visibility           = "visible";
         form.style.position             = "relative";
         newBookButton.style.visibility  = "collapse";
@@ -31,7 +26,6 @@ function toggleFormDisplay() {
 
 
 newBookButton.addEventListener('click', toggleFormDisplay);
-cancelButton.addEventListener('click', toggleFormDisplay);
 
 
 saveButton.addEventListener('click', function addBookToLibrary() {
@@ -45,21 +39,25 @@ saveButton.addEventListener('click', function addBookToLibrary() {
     myLibrary.push(newBook);
     
     window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-    toggleFormDisplay();
+    
     displayBooks();
 });
 
 
+cancelButton.addEventListener('click', toggleFormDisplay);
 
-function Book(title, author, numOfPages, isRead=false) {
-    this.title        = title;
-    this.author       = author;
-    this.numOfPages   = numOfPages;
-    this.isRead       = isRead;
+
+class Book {
+    constructor(title, author, numOfPages, isRead=false){
+        this.title      = title;
+        this.author     = author;
+        this.numOfPages = numOfPages;
+        this.isRead     = isRead;
+    }
 }
 
 
-
+let myLibrary = [];
 
 
 function displayBooks(){
@@ -90,7 +88,7 @@ function displayBooks(){
             } else {
                 let text  = '';
                 let pages = '';
-                key === 'author' ? text = 'Author: ' : key === "numOfPages" ? pages = ' pages' : pages = '';
+                key === 'author' ? text = 'by ' : key === "numOfPages" ? pages = ' pages' : pages = '';
                 
                 book[key] !== '' ? smallDiv.textContent = text + book[key] + pages : smallDiv.textContent = '';
             }
