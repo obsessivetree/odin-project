@@ -1,8 +1,5 @@
-html {
-    --primary: rgb(17, 17, 17);
-}
 body {
-    background-color: rgba(65, 0, 0, 1);
+    background-color: rgb(65, 0, 0);
     color: rgb(230, 230, 230);
     font-family:sans-serif;
     display: flex;
@@ -11,25 +8,24 @@ body {
 header{
     font-size: 4rem;
     text-align: center;
-    background-color: var(--primary);
+    background-color: rgb(17, 17, 17);
     margin-bottom: 1rem;
     padding: 1rem;
 }
 #new-book-button{
     visibility: visible;
-    
+    position: relative;
+    top: -450px;
+    scale: 7%;
+    background-color: rgb(243, 243, 243);
     border-radius: 50%;
-    box-shadow:0 0 10px 3px rgb(138, 138, 138);
-    background-color: rgb(207, 207, 207);
+    padding: 5rem;
+    box-shadow:0 0 20px 10px rgb(71, 71, 71);
+    margin: 10rem auto;
 }
 #new-book-button:hover { 
-    box-shadow:0 0 20px 30px rgba(180, 180, 180, 0.637);
+    box-shadow:0 0 20px 30px rgb(71, 71, 71);
     background-color: rgb(255, 255, 255);
-}
-#nbb-a {
-    position: relative;
-    margin: 10rem auto;
-    top: -150px;
 }
 #form {
     visibility: collapse;
@@ -39,25 +35,18 @@ header{
     border-radius: 1rem;
     border: 1px black solid;
     width: max-content;
-    margin: auto;
-    margin-bottom: 5rem;
+    margin: 0 auto;
 }
 fieldset ul li{
     display: flex;
-    justify-content: space-between;
+    justify-content:end;
     align-items:center;
     padding: .5rem;
 }
 form button {
     width: 8.5rem;
-    height: 2rem;
     border: none;
     border-radius: 1px;
-}
-form input {
-    height: 2rem;
-    margin-left: .6rem;
-    font-size: 1.1rem;
 }
 legend {
     font-weight: bold;
@@ -71,23 +60,15 @@ input {
     border-radius: 1px;
     margin-left: 3px;
 }
-.inpBox {
-    width: 10rem;
-}
-#isReadInp {
-    width: 2rem;
-    /* margin: auto; */
-}
 #lib-div {
-    margin: 1rem auto;
+    margin: 1rem;
     max-width: 95vw;
 }
 .book-card {
     width: 85vw;
-    /* min-width: max-content; */
-    max-width: 100vw;
+    min-width: max-content;
     background-color: rgb(36, 36, 36);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 10px;
     border: 1px rgba(97, 97, 97, 0.329) solid;
     border-left-color: white;
@@ -95,25 +76,17 @@ input {
     border-right-color: white;
     border-right-width: 2px;
     border-bottom-color: black;
-    color: rgb(134, 134, 134);
-
+    
     /* float: left; */
     margin: 1rem auto;
-    /* height: 10rem; */
-    /* max-height: fit-content; */
+    height: 10rem;
     text-align: center;
 }
 .small-div:first-child{
     font-size: 2rem;
-    color: rgb(243, 243, 243);
 }
 .small-div:nth-child(2) {
     font-size: 1.3rem;
-    color: rgb(207, 207, 207);
-    padding: .5rem;
-}
-.small-div:nth-child(4){
-    padding: .5rem;
 }
 .small-div {
     padding: .1rem;
@@ -127,19 +100,4 @@ input {
 .delete-button:hover {
     background-color: red;
     color: white;
-}
-footer {
-    position: fixed;
-    bottom: 0;
-    background-color: var(--primary);
-    width: 100%;
-    padding: 1rem;
-    text-align: center;
-}
-footer a {
-    color: rgb(75, 90, 231);
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
 }
