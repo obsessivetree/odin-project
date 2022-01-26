@@ -51,11 +51,14 @@ saveButton.addEventListener('click', function addBookToLibrary() {
 
 
 
-function Book(title, author, numOfPages, isRead=false) {
-    this.title        = title;
-    this.author       = author;
-    this.numOfPages   = numOfPages;
-    this.isRead       = isRead;
+class Book {
+    constructor(title, author, numOfPages, isRead=false){
+        this.title      = title;
+        this.author     = author;
+        this.numOfPages = numOfPages;
+        this.isRead     = isRead;
+    }
+    
 }
 
 

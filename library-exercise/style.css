@@ -17,16 +17,19 @@ header{
 }
 #new-book-button{
     visibility: visible;
-    position: relative;
-    top: -150px;
+    
     border-radius: 50%;
-    margin: 10rem auto;
     box-shadow:0 0 10px 3px rgb(138, 138, 138);
     background-color: rgb(207, 207, 207);
 }
 #new-book-button:hover { 
     box-shadow:0 0 20px 30px rgba(180, 180, 180, 0.637);
     background-color: rgb(255, 255, 255);
+}
+#nbb-a {
+    position: relative;
+    margin: 10rem auto;
+    top: -150px;
 }
 #form {
     visibility: collapse;
@@ -76,7 +79,7 @@ input {
     /* margin: auto; */
 }
 #lib-div {
-    margin: 1rem;
+    margin: 1rem auto;
     max-width: 95vw;
 }
 .book-card {
