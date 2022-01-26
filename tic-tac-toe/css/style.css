@@ -1,161 +1,184 @@
 html {
-    --ttt-section-size: 7rem;
-    --sea-green: rgb(140, 194, 184);
-    --white: rgb(250, 250, 250);
-    --black: rgb(19, 19, 19);
-    --dark-bg: rgb(31,31,31);
-    --blue: rgb(20, 114, 255);
-    --line-thiccness: 7px;
-    --orange:rgb(238, 196, 162);
-    --green:rgb(140, 252, 177);
-    --pink:rgb(241, 207, 230);
-    --yellow: rgb(252, 247, 203);
+    --ttt-section-size : 7rem;
+    --sea-green        : rgb(140, 194, 184);
+    --white            : rgb(250, 250, 250);
+    --black            : rgb(19, 19, 19);
+    --dark-bg          : rgb(31,31,31);
+    --blue             : rgb(20, 114, 255);
+    --line-thiccness   : 7px;
+    --orange           : rgb(221, 83, 41);
+    --green            : rgb(60, 201, 107);
+    --pink             : rgb(241, 154, 202);
+    --yellow           : rgb(252, 247, 203);
 }
 
 body {
-    background-color: var(--sea-green);
-    display: flex;
-    flex-direction: column;
+    /* background-color : var(--sea-green); */
+    display        : flex;
+    flex-direction : column;
 }
 header {
-    background-color: var(--dark-bg);
-    color: var(--white);
-    /* padding: 1rem; */
-    text-align: center;
+    background-color : var(--dark-bg);
+    color            : var(--white);
+    padding          : .5rem;
+    text-align       : center;
+}
+#drop-down {
+    width : 50rem;
 }
 footer {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    font-size: 3rem;
-    text-align: center;
+    padding-top    : 4rem;
+    padding-bottom : 4rem;
+    font-size      : 3rem;
+    text-align     : center;
 }
 #game-board {
-    /* background-color: white; */
-    width: max-content;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    /* background-color : white; */
+    width                 : max-content;
+    margin                : auto;
+    display               : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    grid-template-rows    : 1fr 1fr 1fr;
 }
 section:nth-child(-n+6){
-    border-bottom: var(--line-thiccness) var(--black) solid;
+    border-bottom : var(--line-thiccness) var(--black) solid;
 }
 section:nth-child(3n-1){
-    border-right: var(--line-thiccness) var(--black) solid;
-    border-left: var(--line-thiccness) var(--black) solid;
+    border-right : var(--line-thiccness) var(--black) solid;
+    border-left  : var(--line-thiccness) var(--black) solid;
 }
 main {
-    display: grid;
-    margin: 2rem auto;
-    color: var(--black);
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 100%;
-    align-items: center;
+    display               : grid;
+    margin                : 2rem auto;
+    color                 : var(--black);
+    grid-template-columns : 1fr 1fr 1fr;
+    width                 : 100%;
+    align-items           : center;
 }
 .scores {
-    max-width: 100%;
-    width: 10rem;
-    /* text-align: center; */
-    font-size: x-large;
-    color: var(--black);
-    background-color: var(--white);
-    border: var(--line-thiccness) var(--black) solid;
-    margin: 0 auto;
-    height: max-content;
-    border-radius: 7px;
-    width: max-content;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
+    max-width : 100%;
+    width     : 10rem;
+    /* text-align : center; */
+    font-size        : x-large;
+    color            : var(--black);
+    background-color : var(--white);
+    border           : var(--line-thiccness) var(--black) solid;
+    margin           : 0 auto;
+    height           : max-content;
+    border-radius    : 7px;
+    width            : max-content;
+    padding          : 1rem;
+    display          : flex;
+    flex-direction   : column;
 }
 .edit-icon {
-    color: inherit;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    color         : inherit;
+    margin-left   : 1rem;
+    margin-bottom : 1rem;
 }
 .edit-icon:hover {
-    color: var(--blue);
+    color : var(--blue);
 }
 .active-player {
-    color: var(--white);
-    background-color: var(--dark-bg);
-    border: var(--line-thiccness) rgb(255, 0, 0) solid;
+    color            : var(--white);
+    background-color : var(--dark-bg);
+    border           : var(--line-thiccness) rgb(255, 0, 0) solid;
 }
 /* .active-player .edit-icon:hover {
-    color: blue;
+    color : blue;
 } */
 section {
-    width: var(--ttt-section-size);
-    height: var(--ttt-section-size);
-    /* border: var(--black) 1px solid; */
-    font-size: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--black);
+    width  : var(--ttt-section-size);
+    height : var(--ttt-section-size);
+    /* border : var(--black) 1px solid; */
+    font-size       : 5rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    color           : var(--black);
 }
 .play-btns {
-    width: max-content;
-    margin: auto;
+    width  : max-content;
+    margin : auto;
 }
 #new-game-btn {
-    visibility: visible;
-    display: initial;
+    visibility : visible;
+    display    : initial;
 }
 #reset-btn {
-    visibility: hidden;
-    display: none;
+    visibility : hidden;
+    display    : none;
 }
 #play-again-btn {
-    visibility: hidden;
-    display: none;
+    visibility : hidden;
+    display    : none;
 }
 #switch-players-btn {
-    margin-top: 1rem;
+    margin-top : 1rem;
 }
 #switch-players-btn:hover {
-    background-color: rgb(255, 238, 0);
+    background-color : rgb(255, 238, 0);
 }
 header h1 {
-    font-size: 4rem;
+    font-size : 3rem;
 }
 #theme-default:hover {
-    background-color: var(--sea-green);
+    background-color : var(--sea-green);
+    color            : var(--black);
 }
 #theme-fruit:hover {
-    background-color: var(--yellow);
+    background-color : var(--yellow);
+    color            : var(--black);
 }
 #theme-halloween:hover {
-    background-color: var(--orange);
+    background-color : var(--orange);
+    color            : var(--black);
 }
 #theme-st-pat:hover {
-    background-color: var(--green);
+    background-color : var(--green);
+    color            : var(--black);
 }
 #theme-valentine:hover {
-    background-color: var(--pink);
+    background-color : var(--pink);
+    color            : var(--black);
 }
-@media screen and (max-width: 740px) {
+.theme-default {
+    background-color : var(--sea-green);
+}
+.theme-fruit {
+    background-color : var(--yellow);
+}
+.theme-halloween {
+    background-color : var(--orange);
+}
+.theme-st-pat {
+    background-color : var(--green);
+}
+.theme-valentine {
+    background-color : var(--pink);
+}
+@media screen and (max-width : 740px) {
     main{
-        /* background-color: rgb(176, 176, 255); */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: min-content;
+        /* background-color : rgb(176, 176, 255); */
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : center;
+        width           : min-content;
     }   
     #p1-score {
-        order: 1;
-        width: 49%;
-        min-width: 10rem;
-        margin-right: 1%;
+        order        : 1;
+        width        : 49%;
+        min-width    : 10rem;
+        margin-right : 1%;
     }
     #p2-score {
-        order: 2;
-        width: 49%;
-        margin-left: 1%;
-        min-width: 10rem;
+        order       : 2;
+        width       : 49%;
+        margin-left : 1%;
+        min-width   : 10rem;
     }
     #game-board {
-        order: 3;
-        margin: 1rem auto;
+        order  : 3;
+        margin : 1rem auto;
     }
 }

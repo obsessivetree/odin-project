@@ -32,15 +32,6 @@ const Player = (name, symbol, isAI) => {
 const Game = () => {
   console.log("game start");
   
-  // const player1 = Player("P1", "🍀", false);
-  // const player2 = Player("P2", "🍺", false);
-  // const player1 = Player("P1", "❤️", false);
-  // const player2 = Player("P2", "😘", false);
-  // const player1 = Player("P1", "👻", false);
-  // const player2 = Player("P2", "🧛", false);
-  // const player1 = Player("Player 1", "🍌", false);
-  // const player2 = Player("Player 2", "🍑", false);
-  
   let   winner                 = false;
   const p1Name                 = document.getElementById("p1-name").textContent;
   const p2Name                 = document.getElementById("p2-name").textContent;
@@ -49,7 +40,6 @@ const Game = () => {
   const playableAreas          = document.querySelectorAll("section");
   const p1Wins                 = document.getElementById("p1-wins");
   const p2Wins                 = document.getElementById("p2-wins");
-  const playAgainBtn           = document.getElementById("play-again-btn");
   const switchPlayersBtn       = document.getElementById("switch-players-btn");
         switchPlayersBtn.style = "visibility: hidden; display: none;";
   
@@ -79,39 +69,19 @@ const Game = () => {
   document.getElementById("p1-symbol").textContent = player1.getSymbol();
   document.getElementById("p2-symbol").textContent = player2.getSymbol();
 
-  // const player1 = (() => {
-  // 	let name, symbol, isAI;
-  // 	while (!name){
-  // 		name = prompt("Player 1's name: ")
-  // 	}
-  // 	while (!symbol){
-  // 		symbol = prompt("Player 1's symbol: ")
-  // 	}
-  // 	while (!isAI){
-  // 		isAI = confirm("Is this player a computer?")
-  // 	}
-  // 	return (Player(name, symbol, false))
-  // })()
-
-  // const player2 = (() => {
-  // 	let name, symbol, isAI;
-  // 	while (!name){
-  // 		name = prompt("Player 2's name: ")
-  // 	}
-  // 	while (!symbol){
-  // 		symbol = prompt("Player 2's symbol: ")
-  // 	}
-  // 	while (!isAI){
-  // 		isAI = prompt("Is this player a computer?")
-  // 	}
-  // 	return (Player(name, symbol, false))
-  // })()
-
-
-
   const Board = (() => {
     let plays = new Array(9).fill("");
-
+    const winningCombos = [
+      "012",
+      "345",
+      "678",
+      "036",
+      "147",
+      "258",
+      "048",
+      "246",
+    ];
+    
     const populateBoard = () => {
       const gameBoard = document.querySelectorAll("section");
       for (let i = 0; i < 9; i++) {
@@ -131,6 +101,7 @@ const Game = () => {
       plays[Number(positionValue)] = symbol;
       // console.log(plays);
       populateBoard();
+      // currentPlayer = getCurrentPlayer()
     };
 
     const updateScores = (reset=false) => {
@@ -144,16 +115,7 @@ const Game = () => {
     };
 
     const checkForWin = (player) => {
-      const winningCombos = [
-        "012",
-        "345",
-        "678",
-        "036",
-        "147",
-        "258",
-        "048",
-        "246",
-      ];
+      
       const p1ScoreBox   = document.getElementById("p1-score");
       const p2ScoreBox   = document.getElementById("p2-score");
 
@@ -242,32 +204,90 @@ const Game = () => {
       );
     };
 
-    // async function computerPlay() {
-    function computerPlay() {
-      const sleep = (ms) => {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-      const randomPlay = (player) => {
-        
-        function randomNumber(max) {
-          return Math.floor(Math.random() * max);
-        }
-        
-        let options = [];
+    function computerPlay(difficulty="none") {
+      if (currentPlayer.isAI) {
+          // pause(300)
 
+        let options = [];
         for (let i = 0; i < 9; i++) {
           if (plays[i] === "") {
             options.push(i);
           }
         }
-        setPlay(options[randomNumber(options.length)], player.getSymbol());
-      };
-      
-      if (currentPlayer.isAI) {
-        // await sleep(700);
-        randomPlay(currentPlayer);
-        Board.checkForWin(currentPlayer)
-        // currentPlayer = getCurrentPlayer();
+        
+        const randomPlay = (player) => {
+          const randomNumber = (max) => {return Math.floor(Math.random() * max);}
+          setPlay(options[randomNumber(options.length)], player.getSymbol());
+        };
+        function pause(numberMillis) { 
+          var now = new Date(); 
+          var exitTime = now.getTime() + numberMillis; 
+          while (true) { 
+              now = new Date(); 
+              if (now.getTime() > exitTime) 
+                  return; 
+          } 
+      } 
+        if (difficulty === "none"){
+          randomPlay(currentPlayer)
+          
+        } 
+        // else if (difficulty === "easy"){
+        //   let otherPlayer         = currentPlayer == = player1 ? player2 : player1;
+        //   let currentPlayerSymbol = currentPlayer.getSymbol();
+        //   let otherPlayerSymbol   = otherPlayer.getSymbol();
+        //   winningCombos.forEach((winningCombo) => {
+        //     if (
+        //       plays[winningCombo[0]] === currentPlayerSymbol &&
+        //       plays[winningCombo[1]] === currentPlayerSymbol &&
+        //       plays[winningCombo[2]] === "" 
+        //     ) {
+        //       setPlay(plays[winningCombo[2]], currentPlayerSymbol)
+        //       return
+        //     } else if (
+        //       plays[winningCombo[0]] === currentPlayerSymbol &&
+        //       plays[winningCombo[1]] === "" &&
+        //       plays[winningCombo[2]] === currentPlayerSymbol 
+        //     ) {
+        //       setPlay(plays[winningCombo[1]], currentPlayerSymbol)
+        //       return
+        //     } else if (
+        //       plays[winningCombo[0]] === "" &&
+        //       plays[winningCombo[1]] === currentPlayerSymbol &&
+        //       plays[winningCombo[2]] === currentPlayerSymbol
+        //     ) {
+        //       setPlay(plays[winningCombo[0]], currentPlayerSymbol)
+        //       return
+        //     } else {
+        //       if (
+        //         plays[winningCombo[0]] === otherPlayerSymbol &&
+        //         plays[winningCombo[1]] === otherPlayerSymbol &&
+        //         plays[winningCombo[2]] === "" 
+        //       ){
+        //         setPlay(plays[winningCombo[2]], currentPlayerSymbol)
+        //         return
+        //       } else if (
+        //         plays[winningCombo[0]] === otherPlayerSymbol &&
+        //         plays[winningCombo[1]] === ""                      &&
+        //         plays[winningCombo[2]] === otherPlayerSymbol 
+        //       ) {
+        //         setPlay(plays[winningCombo[1]], currentPlayerSymbol)
+        //         return
+        //       } else if (
+        //         plays[winningCombo[0]] === "" &&
+        //         plays[winningCombo[1]] === otherPlayerSymbol &&
+        //         plays[winningCombo[2]] === otherPlayerSymbol
+        //       ) {
+        //         setPlay(plays[winningCombo[0]], currentPlayerSymbol)
+        //         return
+        //       } else {
+        //         randomPlay(currentPlayer)
+        //         return
+        //       }
+        //     }
+        //   })
+        // }
+        Board.checkForWin(currentPlayer);
       }
     };
 
@@ -285,15 +305,6 @@ const Game = () => {
 
   let currentPlayer = Board.getCurrentPlayer();
 
-  
-  // playAgainBtn.addEventListener("click", () => {
-  //   Board.reset();
-  //   currentPlayer                 = Board.getCurrentPlayer();
-  //   playAgainBtn.style.visibility = "hidden";
-  //   playAgainBtn.style.display    = "none";
-  //   Board.computerPlay();
-  // })
-
   Board.computerPlay();
 
   playableAreas.forEach((area) => {
@@ -307,13 +318,12 @@ const Game = () => {
 
     if (winner === false) {
       area.addEventListener("mouseup", (e) => {
-        // console.log(`\n______________click_${gen.next().value}_____________\n`);
         console.log(`\n______________click______________\n`);
         e.target.style.color = "rgba(0,0,0,1)";
         Board.setPlay(e.target.id, currentPlayer.getSymbol());
         winner = Board.checkForWin(currentPlayer);
         Board.computerPlay();
-        // currentPlayer = Board.getCurrentPlayer();
+        winner = Board.checkForWin(currentPlayer);
       });
     }
 
@@ -333,36 +343,119 @@ const Game = () => {
   const editBtns         = document.querySelectorAll(".edit-icon");
   const newGameBtn       = document.getElementById("play-btn");
   const resetBtn         = document.getElementById("reset-btn");
-  const playAgainBtn     = document.getElementById("play-again-btn");
   const switchPlayersBtn = document.getElementById("switch-players-btn");
   const p1Name           = document.getElementById("p1-name");
   const p2Name           = document.getElementById("p2-name");
   const p1Symbol         = document.getElementById("p1-symbol");
   const p2Symbol         = document.getElementById("p2-symbol");
+  const themeBtns        = document.querySelectorAll(".theme");
+  const body             = document.querySelector("body");
+  const themeObj = {
+    "theme-default" : {
+      "p1Sym" : "X", 
+      "p2Sym" : "O",
+      "p1Name": "Player 1",
+      "p2Name": "Player 2"
+    },
+    "theme-valentine" : {
+      "p1Sym" : "❤️", 
+      "p2Sym" : "😘",
+      "p1Name": "Player 1",
+      "p2Name": "Player 2"
+    },
+    "theme-st-pat" : {
+      "p1Sym" : "🍀", 
+      "p2Sym" : "🍺",
+      "p1Name": "Player 1",
+      "p2Name": "Player 2"
+    },
+    "theme-fruit" : {
+      "p1Sym" : "🍌", 
+      "p2Sym" : "🍑",
+      "p1Name": "Player 1",
+      "p2Name": "Player 2"
+    },
+    "theme-halloween" : {
+      "p1Sym" : "👻",
+      "p2Sym" : "🧛",
+      "p1Name": "Player 1",
+      "p2Name": "Player 2"
+    }
+  }
 
   Object.keys(sessionStorage).forEach(key => {
-    if (document.getElementById(key)){
-      document.getElementById(key).textContent = sessionStorage.getItem(key)
-    }
-  })
+    let element = document.getElementById(key);
+    if (element){
+      if (element === body){
+        body.classList = sessionStorage.getItem(key);
+        themeBtns.forEach(theme => {
+          if (theme.id === sessionStorage.getItem(key)){
+            theme.classList.add("active"); 
+            document.getElementById("theme-dropdown").textContent = theme.textContent;
+          }
+        })
 
+      } else {
+        element.textContent = sessionStorage.getItem(key)
+      }
+    } 
+    
+  });
+
+  const sessionStoreSymbols = () => {
+    sessionStorage.setItem(p1Symbol.id, p1Symbol.textContent)
+    sessionStorage.setItem(p2Symbol.id, p2Symbol.textContent) 
+  };
+
+  const sessionStoreNames = () => {
+    sessionStorage.setItem(p1Name.id, p1Name.textContent)
+    sessionStorage.setItem(p2Name.id, p2Name.textContent) 
+  };
+  const sessionStoreAi = () => {
+    sessionStorage.setItem(aiBtnP1.id, aiBtnP1.textContent)
+    sessionStorage.setItem(aiBtnP2.id, aiBtnP2.textContent)
+  }
+
+  themeBtns.forEach( (theme) => {
+    theme.addEventListener('click', () => {
+      // let previous = document.querySelector(".active")
+      // console.log(previous.id)
+      body.classList = theme.id;
+      themeBtns.forEach(theme => theme.classList.remove("active"));
+      theme.classList.add("active");
+      Object.keys(themeObj).forEach(key => {
+        if (key === theme.id){
+          p1Symbol.textContent = themeObj[key]["p1Sym"];
+          p2Symbol.textContent = themeObj[key]["p2Sym"];
+          
+        }
+      })
+     
+      document.getElementById("theme-dropdown").textContent = theme.textContent;
+
+      sessionStoreSymbols();
+      sessionStoreNames();
+      sessionStorage.setItem(body.id, body.classList)
+    })
+  });
+  
   switchPlayersBtn.addEventListener('click', () => {
     const ai1                  = aiBtnP1.textContent;
           aiBtnP1.textContent  = aiBtnP2.textContent;
           aiBtnP2.textContent  = ai1;
-          sessionStorage.setItem(aiBtnP1.id, aiBtnP1.textContent)
-          sessionStorage.setItem(aiBtnP2.id, aiBtnP2.textContent)
+          // sessionStoreSymbols();
     const n1                   = p1Name.textContent;
           p1Name.textContent   = p2Name.textContent;
           p2Name.textContent   = n1;
-          sessionStorage.setItem(p1Name.id, p1Name.textContent)
-          sessionStorage.setItem(p2Name.id, p2Name.textContent)
+          // sessionStoreSymbols();
     const s1                   = p1Symbol.textContent;
           p1Symbol.textContent = p2Symbol.textContent;
           p2Symbol.textContent = s1;
-          sessionStorage.setItem(p1Symbol.id, p1Symbol.textContent)
-          sessionStorage.setItem(p2Symbol.id, p2Symbol.textContent)    
-  })
+          sessionStoreSymbols();
+          sessionStoreNames();
+          sessionStoreAi();
+  });
+
   function editBtnFunc(e) {
     let regEx = new RegExp('p[1|2]-symbol', 'i');
     let targetElement = e.target.parentElement.parentElement.parentElement.firstElementChild;
@@ -386,26 +479,30 @@ const Game = () => {
       }
     }
     sessionStorage.setItem(`${targetElement.id}`, `${text}`)
-  }
+  };
+
   function aiSwitch(e) {
     const playAsComp = "Playing as Computer";
     const playAsHuman = "Playing as Human";
 
     if (e.target.textContent === playAsHuman) {
       e.target.textContent = playAsComp;
-      sessionStorage.setItem(e.target.id, playAsComp)
+      e.target.parentElement.querySelector(".name").textContent = "Computer"
+      // sessionStorage.setItem(e.target.id, playAsComp)
       if (e.target.id === aiBtnP1.id){
         aiBtnP2.textContent = playAsHuman;
-        sessionStorage.setItem(aiBtnP2.id, playAsHuman)
+        // sessionStorage.setItem(aiBtnP2.id, playAsHuman)
       }else{
         aiBtnP1.textContent = playAsHuman
-        sessionStorage.setItem(aiBtnP1.id, playAsHuman)
+        // sessionStorage.setItem(aiBtnP1.id, playAsHuman)
       }
     } else {
       e.target.textContent = playAsHuman;
-      sessionStorage.setItem(e.target.id, playAsHuman)
+      e.target.parentElement.querySelector(".name").textContent = sessionStorage.getItem(e.target.parentElement.querySelector(".name").id)
+      // sessionStorage.setItem(e.target.id, playAsHuman)
     }
-  }
+    sessionStoreAi()
+  };
 
   newGameBtn.addEventListener("click", ()=>{
     Game();
@@ -434,5 +531,8 @@ const Game = () => {
     })
   );
 
-  resetBtn.addEventListener("click", () => window.location.reload(true))
+  resetBtn.addEventListener("click", () => window.location.reload(true));
+  
+  
+
 })();
