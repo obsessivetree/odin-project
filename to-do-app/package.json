@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "privat": true,
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tree": "tree -I node_modules",
     "build": "webpack",
     "watch": "webpack --watch",
     "uninstallPackages": "uninstall css-loader csv-loader style-loader",
-    "installPackages": "install --save-dev css-loader csv-loader style-loader"
+    "installPackages": "install --save-dev css-loader style-loader"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.6.0",
+    "eslint": "^8.10.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
