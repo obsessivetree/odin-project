@@ -5,12 +5,12 @@ const body = document.querySelector("body");
 const addBtn = document.getElementById("add-list-btn");
 
 function newEl(element, content = null, id = null, cls = null, type = null) {
-  const newEl = document.createElement(element);
-  if (id) newEl.id = id;
-  if (cls) newEl.classList.add(cls);
-  if (type) newEl.setAttribute("type", type);
-  newEl.innerHTML = content;
-  return newEl;
+  const el = document.createElement(element);
+  if (id) el.id = id;
+  if (cls) el.classList.add(cls);
+  if (type) el.setAttribute("type", type);
+  el.innerHTML = content;
+  return el;
 }
 
 function newItem(item) {
@@ -44,7 +44,10 @@ function showLists(col) {
 
 function showAll(data) {
   clearMain();
-  Object.values(data).forEach((col) => showLists(col));
+  Object.values(data).forEach((col) => {
+    showLists(col);
+    // console.log(col);
+  });
 }
 
 function newCollection(col) {

@@ -1,6 +1,6 @@
 function* generator(str, num) {
   while (true) {
-    yield `${str}-${String(num++)}`;
+    yield `${str}${String(num++)}`;
   }
 }
 let colGen = generator("col", 0);
@@ -62,26 +62,16 @@ function getData(data) {
 }
 
 function unPackData(data) {
-  let cols = [...Object.values(data)];
-  cols.forEach((col) => {
-    col.lists.forEach((list) => {
-      list.items.forEach((item) => {
-        console.table({
-          Collection: col.name,
-          List: list.title,
-          Item: item.description,
-        });
-      });
-    });
-  });
+  const colls = [...Object.keys(data)];
+  console.table([data, Object.values(data)[0].name]);
 }
 
 export {
   Collection,
   List,
   Item,
-  addListToObj as addList,
-  addItemToObj as addItem,
+  addListToObj,
+  addItemToObj,
   setData,
   getData,
   unPackData,

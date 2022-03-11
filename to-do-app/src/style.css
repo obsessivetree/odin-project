@@ -67,6 +67,7 @@ nav div:hover {
 }
 #dropdown-menu div {
   padding: 1rem;
+  cursor: pointer;
 }
 #dropdown-menu div:hover {
   background-color: rgb(180, 218, 221);
@@ -143,6 +144,9 @@ ul li:nth-child(1n + 2) {
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+li {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
