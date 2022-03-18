@@ -61,7 +61,10 @@ function showLists(col) {
 
 function showAll(data) {
   clearMain();
-  Object.values(data).forEach((col) => showLists(col));
+  Object.values(data).forEach((col) => {
+    showLists(col);
+    // console.log(col);
+  });
 }
 
 function show(data) {
