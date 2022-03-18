@@ -4,7 +4,7 @@ html {
   --nav-border: 1px var(--bg-body) solid;
   --text-main: rgb(247, 247, 247);
   --hover-transition-in: linear 70ms;
-  --hover-transition-out: linear 30ms;
+  --hover-transition-out: linear 50ms;
   --hover-color: rgb(47, 70, 112);
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 }
@@ -62,8 +62,10 @@ nav div:hover {
   right: 0.5rem;
   background-color: white;
   color: black;
-  top: 4.3rem;
+  top: 4.6rem;
   border: black 1px solid;
+  cursor: pointer;
+  z-index: 1;
 }
 #dropdown-menu div {
   padding: 1rem;
@@ -80,20 +82,52 @@ nav div:hover {
   visibility: hidden;
 }
 .x {
-  height: 0.6rem;
-  background-color: rgb(168, 168, 168);
-  transform: rotate(45deg);
+  height: 0.8rem;
+  background-color: rgb(109, 109, 109);
+  transform: rotate(-45deg);
   border-radius: 50%;
-  padding: 3px;
+  padding: 6px;
   margin-left: 1rem;
+  transition: transform 100ms linear;
 }
 .x:hover {
+  background-color: rgba(255, 55, 55, 1);
+  transform: rotate(45deg);
+  scale: 125%;
+}
+.list-x {
+  height: 0.8rem;
   background-color: white;
-  transition: var(--hover-transition-in);
-  scale: 120%;
+  transform: rotate(-45deg);
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 100ms linear;
+  /* justify-self: end; */
+}
+.list-x:hover {
+  background-color: rgba(255, 55, 55, 1);
+  transform: rotate(45deg);
+}
+.list-footer {
+  /* background-color: rgb(189, 189, 255); */
+  display: flex;
+  flex-direction: row;
+  padding: 0.3rem;
+  justify-content: space-evenly;
+}
+.list-collection {
+  font-weight: 100;
+  background-color: rgb(190, 190, 190);
+  color: rgb(255, 255, 255);
+  padding: 0.2rem 0.5rem;
+  border-radius: 7px;
+}
+.list h3 {
+  display: flex;
+  justify-content: space-between;
 }
 .active-nav {
-  background-color: rgb(6, 36, 36);
+  background-color: rgb(24, 87, 87) !important;
   color: rgb(255, 255, 163);
 }
 main {
@@ -106,30 +140,45 @@ main input {
   text-align: center;
 }
 #add-list-btn {
-  background-color: rgb(168, 168, 168);
+  background-color: rgb(192, 192, 192);
   height: 1.5rem;
   width: 1.5rem;
-  border-radius: 5px;
-  padding: 0.3rem;
+  border-radius: 50%;
+  padding: 0.9rem;
   cursor: pointer;
-  transition: var(--hover-transition-out);
-}
-#add-list-btn:hover {
-  background-color: rgb(255, 255, 255);
-  scale: 110%;
-  transition: var(--hover-transition-in);
+  transition: 100ms ease-out;
 }
 
+.hover {
+  background-color: rgb(255, 255, 255) !important;
+  padding: 0.65rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  /* transition: var(--hover-transition-in); */
+  transform: rotate(90deg);
+}
+.item {
+  cursor: pointer;
+  border-radius: 2px;
+}
+.item:hover {
+  background-color: rgb(194, 201, 206);
+}
 .list {
   /* width: 40%; */
   border: black 1px solid;
   border-radius: 3px;
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   background-color: white;
 }
 .list h3 {
   text-align: center;
+}
+.checkBox {
+  /* border-radius: 50%; */
+  /* border: none; */
+  background-color: blue;
 }
 ul {
   list-style-type: none;
@@ -156,6 +205,9 @@ main {
   nav {
     flex-direction: column;
     text-align: center;
+  }
+  nav div {
+    justify-content: space-between;
   }
   nav div:hover {
     scale: 100%;

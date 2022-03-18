@@ -1,0 +1,20 @@
+{
+  "name": "1to-do-again",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "tree": "tree -I node_modules",
+    "installPkgs": "npm install --save-dev bootstrap jquery popper.js style-loader css-loader",
+    "uninstallPkgs": "npm uninstall jquery popper.js style-loader css-loader"
+  },
+  "keywords": [],
+  "author": "Daniel Beatty",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

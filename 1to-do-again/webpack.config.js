@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/main.js",
   devtool: "inline-source-map",
   output: {
     filename: "main.bundle.js",
@@ -14,10 +14,6 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-      //   type: "asset/resource",
-      // },
     ],
   },
 };
