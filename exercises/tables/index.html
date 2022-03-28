@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Table template</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Planets Data</h1>
+    <table>
+      <colgroup>
+        <col />
+        <col />
+        <col id="planet-names" />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <caption>
+        Data about the planets of our solar system (Planetary facts taken from
+        <a href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+          >Nasa's Planetary Fact Sheet - Metric</a
+        >).
+      </caption>
+      <tbody>
+        <tr>
+          <th colspan="2" class="blank"></th>
+          <th>Name</th>
+          <th>
+            Mass
+            <div>(10<sup>24</sup>kg)</div>
+          </th>
+          <th>
+            Diameter
+            <div>(km)</div>
+          </th>
+          <th>
+            Density
+            <div>(kg/m<sup>3</sup>)</div>
+          </th>
+          <th>
+            Gravity
+            <div>(m/s<sup>2</sup>)</div>
+          </th>
+          <th>
+            Length of Day
+            <div>(hours)</div>
+          </th>
+          <th>
+            Distance from Sun
+            <div>(10<sup>6</sup>km)</div>
+          </th>
+          <th>Mean temperature (°C)</th>
+          <th>Number of moons</th>
+          <th>Notes</th>
+        </tr>
+        <tr id="mercury" class="planet-row">
+          <th colspan="2" rowspan="4">Terrestrial Planets</th>
+        </tr>
+        <tr id="venus" class="planet-row"></tr>
+        <tr id="earth" class="planet-row"></tr>
+        <tr id="mars" class="planet-row"></tr>
+        <tr id="jupiter" class="planet-row">
+          <th rowspan="4">Jovian Planets</th>
+          <th rowspan="2">Gas Giants</th>
+        </tr>
+        <tr id="saturn" class="planet-row"></tr>
+        <tr id="uranus" class="planet-row">
+          <th rowspan="2">Ice Giants</th>
+        </tr>
+        <tr id="neptune" class="planet-row"></tr>
+        <tr id="pluto" class="planet-row">
+          <th colspan="2">Dwarf Planets</th>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
