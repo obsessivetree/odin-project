@@ -1,0 +1,24 @@
+{
+  "name": "webpack-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tree": "tree -I node_modules",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "uninstallPackages": "npm uninstall css-loader style-loader",
+    "installPackages": "npm install --save-dev css-loader style-loader"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

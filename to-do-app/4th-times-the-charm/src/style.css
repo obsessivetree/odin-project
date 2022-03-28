@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+html {
+  --font-main: Ubuntu;
+  font-family: var(--font-main);
+  --bg-main: rgb(224, 224, 224);
+  --bg-list: white;
+  --bg-header: rgb(34, 34, 34);
+  --text-color-header: white;
+  --nav-border: 1px var(--bg-main) solid;
+  --nav-bg: rgb(66, 66, 66);
+  --X-transition: 70ms linear;
+  --X-transform: rotate(-90deg);
+  font-size: 1.1em;
+  width: 100vw;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  user-select: none;
+}
+html * {
+  margin: 0;
+  font-family: Ubuntu;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+header {
+  background-color: var(--bg-header);
+  color: var(--text-color-header);
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  color: var(--text-color-header);
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  background-color: var(--nav-bg);
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.3rem;
+  padding: 1.2rem 1rem;
+}
+.nav-item:not(:last-child) {
+  border-right: var(--nav-border);
+}
+.nav-item:not(:first-child) {
+  padding: 1.2rem 0.5rem 1.2rem 1rem;
+}
+.nav-item:hover {
+  background-color: black;
+}
+.active-nav {
+  background-color: rgb(50, 50, 105);
+}
+body {
+  background-color: var(--bg-main);
+  width: 100%;
+}
+main {
+  display: grid;
+  padding: 1rem;
+  width: 100%;
+}
+h1 {
+  font-size: 2.5rem;
+}
+.list {
+  background-color: var(--bg-list);
+
+  min-width: fit-content;
+
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+h2 {
+  text-align: center;
+  cursor: text;
+}
+h2 input {
+  width: 10rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+}
+h2 input:focus {
+  outline: #77b255 1px solid;
+  border-radius: 0.25rem;
+}
+.list:hover {
+  box-shadow: 0 0 5px 5px rgba(163, 163, 163, 0.336);
+}
+.list-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.list .pin:hover {
+  stroke: gray;
+  cursor: pointer;
+}
+.list label {
+  cursor: text;
+}
+.del-col-btn {
+  padding: 0.2rem;
+  margin-left: 1rem;
+  height: 1.1rem;
+  opacity: 50%;
+  transition: var(--X-transition);
+  border-radius: 50%;
+}
+.del-col-btn:hover {
+  background-color: rgb(248, 0, 0);
+  opacity: 100%;
+  transform: var(--X-transform);
+}
+.del-list-btn {
+  opacity: 50%;
+  padding: 0.1rem;
+  height: 1.5rem;
+  transition: var(--X-transition);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.del-list-btn:hover {
+  opacity: 100%;
+  background-color: rgb(255, 175, 175);
+  transform: var(--X-transform);
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.checkbox {
+  border: 1px rgb(234, 234, 234) solid;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+}
+.checkbox img {
+  border-radius: 50%;
+  background-color: #77b255;
+  width: 1.1rem;
+  height: 1.1rem;
+  user-select: none;
+}
+li {
+  /* border: 1px gray solid; */
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+li input {
+  border: none;
+  width: 100%;
+  outline: none;
+  font-size: 1em;
+}
+li:hover {
+  background-color: rgb(226, 226, 226);
+}
+#add-col-btn {
+  background-color: rgb(255, 236, 149);
+  border: 1px black solid;
+  border-radius: 0.5em;
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+}
+#add-col-btn:hover {
+  background-color: rgb(255, 241, 115);
+  transform: scale(1.05);
+}
+@media screen and (max-width: 600px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 600px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1100px) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

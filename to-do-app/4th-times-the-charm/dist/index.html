@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../icons/favicon_green_checks/android-chrome-512x512.png"
+      type="image/x-icon"
+    />
+    <title>Tasks</title>
+  </head>
+  <body>
+    <header>
+      <h1>Tasks</h1>
+      <input id="add-col-btn" type="button" value="Add Collection" />
+    </header>
+    <nav>
+      <div id="all-col-nav" class="nav-item active-nav">All</div>
+      <div class="nav-item">
+        Nav 1
+        <img
+          class="del-col-btn x"
+          src="../icons/xWhite.svg"
+          alt="delete collection button"
+          srcset=""
+          title="Delete Collection"
+        />
+      </div>
+    </nav>
+
+    <main>
+      <div class="list">
+        <div class="list-head">
+          <svg
+            class="pin"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="lightgray"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-star"
+          >
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+
+          <h2>List 1</h2>
+          <img
+            class="del-list-btn x"
+            src="../icons/x.svg"
+            alt="delete list button"
+            srcset=""
+            title="Delete List"
+          />
+        </div>
+        <div class="list-contents">
+          <ul>
+            <li>
+              <div id="item1" class="checkbox"></div>
+              <div class="item-description" for="item1">Item 1</div>
+            </li>
+            <li>
+              <div id="item2" class="checkbox"></div>
+              <div class="item-description" for="item2">Item 2</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="list-head">
+          <svg
+            class="pin"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="lightgray"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-star"
+          >
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+
+          <h2>List 2</h2>
+          <img
+            class="del-list-btn x"
+            src="../icons/x.svg"
+            alt="delete list button"
+            srcset=""
+            title="Delete List"
+          />
+        </div>
+        <div class="list-contents">
+          <ul>
+            <li>
+              <div id="item1" class="checkbox"></div>
+              <div class="item-description" for="item1">Item 1</div>
+            </li>
+            <li>
+              <div id="item2" class="checkbox"></div>
+              <div class="item-description" for="item2">Item 2</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script src="./main.bundle.js" defer></script>
+  </body>
+</html>
