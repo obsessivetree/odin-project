@@ -12,112 +12,134 @@
     />
     <title>Tasks</title>
   </head>
+
   <body>
     <header>
       <h1>Tasks</h1>
-      <input id="add-col-btn" type="button" value="Add Collection" />
-    </header>
-    <nav>
-      <div id="all-col-nav" class="nav-item active-nav">All</div>
-      <div class="nav-item">
-        Nav 1
-        <img
-          class="del-col-btn x"
-          src="../icons/xWhite.svg"
-          alt="delete collection button"
-          srcset=""
-          title="Delete Collection"
+      <div class="col-btns">
+        <input
+          id="add-col-btn"
+          class="add-col-btn"
+          type="button"
+          value="Add Collection"
+        />
+        <input
+          id="finish-col-btn"
+          class="finish-col-btn"
+          type="button"
+          value="Finish Collection"
         />
       </div>
+    </header>
+
+    <nav>
+      <div id="all-col-nav" class="nav-item pad-right active-nav nav-select">
+        All
+      </div>
+
+      <div href="#click" class="menu nav-select">
+        <div class="menu-title">Select Collection</div>
+        <ul class="menu-dropdown">
+          <li class="col0">Collection 1</li>
+        </ul>
+      </div>
+
+      <div id="archive" class="nav-item pad-right nav-select">Archive</div>
     </nav>
 
     <main>
-      <div class="list">
+      <!-- LIST 1  LIST 1  LIST 1  LIST 1  LIST 1  LIST 1  LIST 1  LIST 1  LIST 1 -->
+      <div class="list card list0">
         <div class="list-head">
           <svg
-            class="pin"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="lightgray"
-            stroke-width="2"
+            stroke-width="1"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="feather feather-star"
+            class="feather feather-star pin"
           >
             <polygon
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
             ></polygon>
           </svg>
-
-          <h2>List 1</h2>
+          <div class="list-titles">
+            <h2 class="list-title">My First List</h2>
+            <h3 class="collection-origin col0">Collection 1</h3>
+          </div>
           <img
             class="del-list-btn x"
-            src="../icons/x.svg"
-            alt="delete list button"
-            srcset=""
             title="Delete List"
+            src="../icons/x.svg"
+            alt=""
+            srcset=""
           />
         </div>
         <div class="list-contents">
           <ul>
-            <li>
+            <li class="checkbox-li item item0">
               <div id="item1" class="checkbox"></div>
               <div class="item-description" for="item1">Item 1</div>
+
+              <!-- DEL ITEM -->
+              <img
+                class="del-item-btn x"
+                src="../icons/xWhite.svg"
+                alt=""
+                srcset=""
+              />
+              <!-- ITEM DRAGGER -->
+              <img
+                class="item-dragger"
+                src="../icons/menu.svg"
+                alt=""
+                srcset=""
+              />
             </li>
-            <li>
-              <div id="item2" class="checkbox"></div>
-              <div class="item-description" for="item2">Item 2</div>
+
+            <li class="add-item item">
+              <!-- ADD ITEM -->
+              <img src="../icons/plus-circle.svg" alt="" srcset="" />
+              <div class="item-description"></div>
             </li>
           </ul>
         </div>
-      </div>
-
-      <div class="list">
-        <div class="list-head">
-          <svg
-            class="pin"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="lightgray"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="feather feather-star"
-          >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            ></polygon>
-          </svg>
-
-          <h2>List 2</h2>
+        <div class="list-footer">
+          <!-- COLOR PICKER -->
           <img
-            class="del-list-btn x"
-            src="../icons/x.svg"
+            class="color-wheel"
+            src="../icons/color-wheel-icon.png"
+            alt=""
+            srcset=""
+          />
+
+          <input
+            class="color-input"
+            type="color"
+            title="List Background Color Picker"
+            name="list1color"
+            id="list1color"
+            data-content="#FFF"
+          />
+          <!-- DEL LIST -->
+          <img
+            class="finish-list-btn x"
+            src="../icons/check.svg"
             alt="delete list button"
             srcset=""
-            title="Delete List"
+            title="Finish and Archive List"
           />
-        </div>
-        <div class="list-contents">
-          <ul>
-            <li>
-              <div id="item1" class="checkbox"></div>
-              <div class="item-description" for="item1">Item 1</div>
-            </li>
-            <li>
-              <div id="item2" class="checkbox"></div>
-              <div class="item-description" for="item2">Item 2</div>
-            </li>
-          </ul>
         </div>
       </div>
     </main>
+
+    <div id="add-list-btn" title="Add List" class="add-list-div">
+      <img class="add-list-img" src="../icons/plus.svg" alt="" srcset="" />
+    </div>
     <script src="./main.bundle.js" defer></script>
   </body>
 </html>
